@@ -2,13 +2,13 @@
 include 'db.php';
 session_start();
 
-// Check if the user is logged in
+
 if (!isset($_SESSION['username'])) {
     header('Location: login.php');
     exit;
 }
 
-// Fetch products from the database
+
 $sql = "SELECT * FROM products";
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
@@ -21,9 +21,9 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <!-- Bootstrap CSS -->
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- FontAwesome for icons -->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         .card {
@@ -63,7 +63,6 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </div>
 
 
-        <!-- Action Buttons above Product List -->
         <div class="btn-header">
             <a href="addform.php" class="btn btn-success">
                 <i class="fas fa-plus-circle"></i> Add New Product
@@ -73,7 +72,6 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </a>
         </div>
 
-        <!-- Product List Section -->
         <h2 class="text-center mt-4 mb-4">Product List</h2>
 
         <table class="table table-bordered table-striped">
@@ -103,7 +101,6 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </table>
     </div>
 
-    <!-- Bootstrap JS and Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 </body>

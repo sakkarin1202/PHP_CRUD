@@ -1,8 +1,8 @@
 <?php
 $host = 'localhost';
 $dbname = 'product_management';
-$username = 'root';  // ใช้ชื่อผู้ใช้ฐานข้อมูล
-$password = '';      // ใช้รหัสผ่านฐานข้อมูล
+$username = 'root';  
+$password = '';      
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);

@@ -4,8 +4,7 @@ include 'db.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-
-    // ตรวจสอบว่าชื่อผู้ใช้ซ้ำในฐานข้อมูลหรือไม่
+    
     $sql_check = "SELECT * FROM users WHERE username = ?";
     $stmt_check = $pdo->prepare($sql_check);
     $stmt_check->execute([$username]);
@@ -13,16 +12,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($existingUser) {
         $message = "Username already taken. Please choose a different username.";
-        $alertClass = "alert-danger"; // ใช้สีแดงสำหรับข้อผิดพลาด
+        $alertClass = "alert-danger";
     } else {
         $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
         $stmt = $pdo->prepare($sql);
         if ($stmt->execute([$username, $password])) {
             $message = "Registration successful! Welcome, $username.";
-            $alertClass = "alert-success"; // ใช้สีเขียวสำหรับข้อความสำเร็จ
+            $alertClass = "alert-success"; 
         } else {
             $message = "Error: " . $stmt->errorInfo();
-            $alertClass = "alert-danger"; // ใช้สีแดงสำหรับข้อผิดพลาด
+            $alertClass = "alert-danger"; 
         }
     }
 }
